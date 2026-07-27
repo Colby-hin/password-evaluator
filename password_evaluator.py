@@ -1,7 +1,5 @@
 print("Welcome to Colbys Password Strength Evaluator!")
 
-# Remember: to define a list in Python, we use square brackets []
-# and separate each item with a comma.
 # Here we define a list of example passwords to evaluate.
 
 passwords = [
@@ -38,32 +36,16 @@ print('"admin" is long enough?', is_min_length("admin"))
 # - Contain at least one special character (from a selected set: !@#$%^&*()_+-=)
 
 def is_strong_password(pwd):
-    # First, we check if the password is at least 8 characters.
-    # While we could technically leave this out and let the other checks fail,
-    # it's often best practice to explicitly separate length requirements.
-    # This allows us to give more targeted feedback or skip other checks early.
     if len(pwd) < 8:
-        return False  # Immediately return False if it's too short
-
-    # Check if the password has at least one uppercase letter
+        return False
     has_upper = any(c.isupper() for c in pwd)
-
-    # Check if the password has at least one lowercase letter
     has_lower = any(c.islower() for c in pwd)
-
-    # Check if the password has at least one digit
     has_digit = any(c.isdigit() for c in pwd)
-
-    # Check if the password contains at least one special character from our chosen set
     has_special = any(c in "!@#$%^&*()_+-=" for c in pwd)
-
-    # Return True only if *all* criteria are met
     return has_upper and has_lower and has_digit and has_special
 
-# Prints a header before starting the evaluation
 
 print("\nEvaluating passwords:\n")
-
 # Loop through each password in the list
 for pwd in passwords:
     if is_strong_password(pwd):
